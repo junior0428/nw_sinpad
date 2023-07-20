@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Emergencia</title>
+    <link href="/img/LogoIndeci.png" rel="icon">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"/>
+     
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"/>
+    
+    
+
+    
+</head>
+<body>
+    <div id="sidebar" class="sidebar collapsed">
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li class="active">
+                   <a href="#principal" role="tab" title data-placement="right" data-toggle="tooltip" data-original-title="PRINCIPAL"><i class="fa fa-bars"></i></a> 
+                </li>
+                <li>
+                    <a href="#capas" role="tab" title data-placement="right" data-toggle="tooltip" data-original-title="CAPAS"><i class="fa fa-layer-group"></i></a> 
+                </li>
+                <li>
+                    <a href="#tablero" role="tab" title data-placement="right" data-toggle="tooltip" data-original-title="TABLERO"><i class="fa fa-file-invoice"></i></a> 
+                </li>
+                <li>
+                    <a href="#informacion" role="tab" title data-placement="right" data-toggle="tooltip" data-original-title="INFORMACION DEL RECURSO"><i class="fa fa-info-circle"></i></a> 
+                </li>
+                <li>
+                    <a href="#mapa" role="tab" title data-placement="right" data-toggle="tooltip" data-original-title="MAPAS"><i class="fa fa-map"></i></a> 
+                </li>
+            </ul>
+            <ul role="tablist">
+                <li>
+                    <a href="#setting" role="tab"><i class="fa fa-gear"></i></a> 
+                 </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    <!-- Load the `mapbox-gl-geocoder` plugin. -->
+    <div id="map"></div>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     <script src="L.TileLayer.BetterWMS.js"></script>
+     <script src="script.js"></script>
+     
+</body>
+</html>

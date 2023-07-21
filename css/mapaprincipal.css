@@ -1,0 +1,1294 @@
+button.multiselect {
+    width: 100%;
+    text-align: left;
+}
+
+label.checkbox {
+    padding: 3px 10px 3px 10px !important;
+    color: #000000;
+}
+
+#mainSel > .bg-white {
+    height: calc(1.5em + 0.5rem + 2px);
+    padding: 0.25rem 0.5rem;
+    line-height: 1.5 !important;
+    border-radius: 0.2rem;
+}
+
+    #mainSel > .bg-white > button {
+        padding: 0 !important;
+    }
+
+    #mainSel > .bg-white > .multiselect-container {
+        top: 6px !important;
+        left: -6px !important;
+    }
+
+    #mainSel > .bg-white > button > .multiselect-selected-text {
+        color: #4d5875;
+        font-size: 0.76562rem !important;
+    }
+
+.ui-datepicker {
+    z-index: 1000 !important;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: #b3292a;
+    color: #fffcfc;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: #fffcfc;
+}
+
+input:disabled {
+    background-color: #808080 !important;
+}
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    background: url('../../img/IconoLoader.svg') 50% 50% no-repeat rgb(249,249,249);
+    background-size: 150px;
+    background-color: #c4e3f3;
+    opacity: 0.8;
+}
+
+.loader-texto-centrado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #9F1216;
+    text-align: center;
+    font-weight: bold;
+    /*font-size: 16px;*/
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+/* Add this attribute to the element that needs a tooltip */
+[data-tooltip] {
+    position: relative;
+    z-index: 2000;
+    cursor: pointer;
+}
+
+    /* Hide the tooltip content by default */
+    [data-tooltip]:before,
+    [data-tooltip]:after {
+        visibility: hidden;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Position tooltip above the element */
+    [data-tooltip]:before {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-bottom: 5px;
+        margin-left: -80px;
+        padding: 7px;
+        width: 160px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        background-color: #000;
+        background-color: hsla(0, 0%, 20%, 0.9);
+        color: #fff;
+        content: attr(data-tooltip);
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.2;
+    }
+
+    /* Triangle hack to make tooltip look like a speech bubble */
+    [data-tooltip]:after {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -5px;
+        width: 0;
+        border-top: 5px solid #000;
+        border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        content: " ";
+        font-size: 0;
+        line-height: 0;
+    }
+
+    /* Show tooltip content on hover */
+    [data-tooltip]:hover:before,
+    [data-tooltip]:hover:after {
+        visibility: visible;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+        opacity: 1;
+    }
+
+.fa-2xs {
+    font-size: .625em;
+    line-height: .1em;
+    vertical-align: .225em
+}
+
+.fa-xs {
+    font-size: .75em;
+    line-height: .08333em;
+    vertical-align: .125em
+}
+
+.fa-sm {
+    font-size: .875em;
+    line-height: .07143em;
+    vertical-align: .05357em
+}
+
+.fa-lg {
+    font-size: 1.25em;
+    line-height: .05em;
+    vertical-align: -.075em
+}
+
+.fa-xl {
+    font-size: 1.5em;
+    line-height: .04167em;
+    vertical-align: -.125em
+}
+
+.fa-2xl {
+    font-size: 2em;
+    line-height: .03125em;
+    vertical-align: -.1875em
+}
+
+.custom-control-input:checked ~ .controlchk::before {
+    color: #fff;
+    border-color: #0162e8;
+    background-color: #0162e8;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.side-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    position: fixed;
+    height: 70vh;
+    margin-top: 26vh;
+    margin-right: 2vw;
+    border-radius: 8px;
+    width: 60px;
+    /* background-color: lightgrey; */
+    top: 0;
+    right: 0;
+}
+
+img {
+    width: 30px;
+    height: auto;
+}
+
+    img:hover {
+        width: 35px;
+    }
+
+.flotanteDerecho {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+	left: 87%;
+    width: 200px;
+    /*background-color: white;*/
+    background: rgba(255,255,255,0.5);
+    padding: 5px;
+    /*border: 1px solid black;*/
+    z-index: 800;
+    border-radius: 7px;
+    box-shadow: 0px 1px 6px 1px #838383;
+}
+
+.flotanteSuperior {
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    width: 100%;
+    /*background-color: white;
+                                                background: rgba(255,255,255,0.5);*/
+    padding: 5px;
+    /*border: 1px solid black;*/
+    z-index: 800;
+}
+
+.meineclass {
+    float: left;
+}
+
+.fondoMenuFlotante {
+    /*background-color: #9f1216e0;*/
+    background: linear-gradient(90deg, #0d47a1 10%, #1565c0 90%);
+    color: white;
+    border-color: #f7f7f7;
+}
+
+.tree, .tree ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+}
+
+    .tree ul {
+        margin-left: 1em;
+        position: relative;
+    }
+
+        .tree ul ul {
+            margin-left: .5em;
+        }
+
+        .tree ul:before {
+            content: "";
+            display: block;
+            width: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            border-left: 1px solid;
+        }
+
+    .tree li {
+        margin: 0;
+        padding: 0 1em;
+        line-height: 2em;
+        color: #333;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 3px;
+    }
+
+    .tree ul li:before {
+        content: "";
+        display: block;
+        width: 10px;
+        height: 0;
+        border-top: 1px solid;
+        margin-top: -1px;
+        position: absolute;
+        top: 1em;
+        left: 0;
+    }
+
+    .tree ul li:last-child:before {
+        background: #fff;
+        height: auto;
+        top: 1em;
+        bottom: 0
+    }
+
+.indicator {
+    margin-right: 5px;
+}
+
+.tree li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.tree li button, .tree li button:active, .tree li button:focus {
+    text-decoration: none;
+    color: #333;
+    border: none;
+    background: transparent;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    outline: 0;
+}
+
+
+.icoAutomovil {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoAutomovil:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Automovil.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoAlmacen {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoAlmacen:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Almacen.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCamion {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCamion:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Camion.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCamioneta {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCamioneta:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Camioneta.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCargadorFrontal {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCargadorFrontal:before {
+        content: '';
+        background: url(../../img/unidades/blanco/CargadorFrontal.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCisternaAgua {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCisternaAgua:before {
+        content: '';
+        background: url(../../img/unidades/blanco/CisternaAgua.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCisternaCombustible {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCisternaCombustible:before {
+        content: '';
+        background: url(../../img/unidades/blanco/CisternaCombustible.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoElectrobomaSumergible {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoElectrobomaSumergible:before {
+        content: '';
+        background: url(../../img/unidades/blanco/ElectrobomaSumergible.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoExcavadoraHidraulica {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoExcavadoraHidraulica:before {
+        content: '';
+        background: url(../../img/unidades/blanco/ExcavadoraHidraulica.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoExcavadorFrontal {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoExcavadorFrontal:before {
+        content: '';
+        background: url(../../img/unidades/blanco/ExcavadorFrontal.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoGrua {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoGrua:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Grua.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoHidrojet {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoHidrojet:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Hidrojet.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoMiniCargador {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoMiniCargador:before {
+        content: '';
+        background: url(../../img/unidades/blanco/MiniCargador.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoMontaCarga {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoMontaCarga:before {
+        content: '';
+        background: url(../../img/unidades/blanco/MontaCarga.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoMotobomba {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoMotobomba:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Motobomba.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoMotocicleta {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoMotocicleta:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Motocicleta.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoMotoniveladora {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoMotoniveladora:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Motoniveladora.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoOruga {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoOruga:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Oruga.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoPlataforma {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoPlataforma:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Plataforma.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoPlataformaBaja {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoPlataformaBaja:before {
+        content: '';
+        background: url(../../img/unidades/blanco/PlataformaBaja.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoRemolcador {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoRemolcador:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Remolcador.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoRetroEcavadora {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoRetroEcavadora:before {
+        content: '';
+        background: url(../../img/unidades/blanco/RetroEcavadora.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoRodilloCompactador {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoRodilloCompactador:before {
+        content: '';
+        background: url(../../img/unidades/blanco/RodilloCompactador.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoRodilloVibrados {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoRodilloVibrados:before {
+        content: '';
+        background: url(../../img/unidades/blanco/RodilloVibrados.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoTractorOruga {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoTractorOruga:before {
+        content: '';
+        background: url(../../img/unidades/blanco/TractorOruga.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoVan {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoVan:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Van.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoVolquete {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoVolquete:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Volquete.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoElectrobomba {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoElectrobomba:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Electrobomba.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCamionTrasvasador {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCamionTrasvasador:before {
+        content: '';
+        background: url(../../img/unidades/blanco/CamionTrasvasador.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoMaquinaBalde {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoMaquinaBalde:before {
+        content: '';
+        background: url(../../img/unidades/blanco/MaquinaBalde.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoPlantaPortatil {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoPlantaPortatil:before {
+        content: '';
+        background: url(../../img/unidades/blanco/PlantaPortatil.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCamionTropa {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCamionTropa:before {
+        content: '';
+        background: url(../../img/unidades/blanco/CamionTropa.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoAmbulancia {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoAmbulancia:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Ambulancia.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCushionTruck {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCushionTruck:before {
+        content: '';
+        background: url(../../img/unidades/blanco/CushionTruck.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoLuminaria {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoLuminaria:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Luminaria.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoRodillo {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoRodillo:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Rodillo.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoTractorNeumatico {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoTractorNeumatico:before {
+        content: '';
+        background: url(../../img/unidades/blanco/TractorNeumatico.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoBus {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoBus:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Bus.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoBote {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoBote:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Bote.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+
+.icoUnidadMovilComunicaciones {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoUnidadMovilComunicaciones:before {
+        content: '';
+        background: url(../../img/unidades/blanco/UnidadMovilComunicaciones.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoPuestoComandoMovil {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoPuestoComandoMovil:before {
+        content: '';
+        background: url(../../img/unidades/blanco/PuestoComandoMovil.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCentroMovilAtencion {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCentroMovilAtencion:before {
+        content: '';
+        background: url(../../img/unidades/blanco/CentroMovilAtencion.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoGrupoIntervencionRapida {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoGrupoIntervencionRapida:before {
+        content: '';
+        background: url(../../img/unidades/blanco/GrupoIntervencionRapida.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCamionTracto {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCamionTracto:before {
+        content: '';
+        background: url(../../img/unidades/blanco/CamionTracto.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCamionAuxilioMecanico {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCamionAuxilioMecanico:before {
+        content: '';
+        background: url(../../img/unidades/blanco/CamionAuxilioMecanico.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoRecursosHumanos {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoRecursosHumanos:before {
+        content: '';
+        background: url(../../img/unidades/blanco/RecursosHumanos.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoEstablecimientoSalud {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoEstablecimientoSalud:before {
+        content: '';
+        background: url(../../img/unidades/blanco/EstablecimientoSalud.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoCird {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoCird:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Cird.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoBrigadaEspecialPNP {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoBrigadaEspecialPNP:before {
+        content: '';
+        background: url(../../img/unidades/blanco/BrigadaEspecialPNP.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoComisarias {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoComisarias:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Comisarias.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoUBOCGBVP {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoUBOCGBVP:before {
+        content: '';
+        background: url(../../img/unidades/blanco/UBOCGBVP.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoHospitales {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoHospitales:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Hospitales.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoBanoPortatil {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoBanoPortatil:before {
+        content: '';
+        background: url(../../img/unidades/blanco/BanoPortatil.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoAvion {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoAvion:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Avion.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoBuque {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoBuque:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Buque.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoHelicoptero {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoHelicoptero:before {
+        content: '';
+        background: url(../../img/unidades/blanco/Helicoptero.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }
+
+.icoTiendaCampana {
+    /*display: flex;*/
+    width: 30px;
+    height: 20px;
+    padding: 0px 23px 0px 8px;
+}
+
+    .icoTiendaCampana:before {
+        content: '';
+        background: url(../../img/unidades/blanco/TiendaCampana.png);
+        background-size: 28px;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+    }

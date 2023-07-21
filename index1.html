@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sistema de Emergencia</title>
+	<link href="/img/LogoIndeci.png" rel="icon">
+	<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" />
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<!--<link rel="stylesheet" href="styles.css" />-->
+	<link rel="stylesheet" href="./css/icons.css" />
+	<link rel="stylesheet" href="./css/sidebar.css" />
+	<link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
+	<link rel="stylesheet" href="./css/sidemenu.css" />
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/style-dark.css" />
+	<link rel="stylesheet" href="./css/skin-modes.css" />
+	<link rel="stylesheet" href="./css/animate.css" />
+	<link rel="stylesheet" href="./css/leaflet.css" />
+	<link rel="stylesheet" href="./css/buttons.dataTables.min.css" />
+	<link rel="stylesheet" href="./css/jquery-ui.css" />
+	<link rel="stylesheet" href="./css/jquery.dataTables.min.css" />
+	<link rel="stylesheet" href="./css/jquery.simple-dtpicker.css" />
+
+
+
+
+
+	<link rel="stylesheet" href="./css/sweetalert.css" />
+	<link rel="stylesheet" href="./css/toastr.css" />
+
+
+</head>
+
+<body class="main-body app sidebar-mini contenidoBody sidenav-toggled">
+	<!-- Loader -->
+	<div b-zsathhrdc6="" id="pkLoader" class="loaderPagina" style="display: none;">
+		<div b-zsathhrdc6="" class="center-block">
+			<div b-zsathhrdc6="" class="loader-texto-centrado">
+				<span b-zsathhrdc6="" id="lblTextoLoader"></span>
+			</div>
+		</div>
+	</div>
+	<!-- /Loader -->
+	<input b-zsathhrdc6="" id="hdUser" type="hidden" value="118">
+	<!-- Page -->
+	<div b-zsathhrdc6="" class="page active">
+
+		<!-- main-sidebar -->
+		<div b-zsathhrdc6="" class="app-sidebar__overlay" data-toggle="sidebar"></div>
+		<aside b-zsathhrdc6="" class="app-sidebar sidebar-scroll">
+			<div b-zsathhrdc6="" class="main-sidebar-header active">
+				<a b-zsathhrdc6="" class="desktop-logo logo-light active" href="#"><img src="./img/1920px-PCM-Agricultura.png" class="main-logo" alt="logo" style="width:100%;border-radius:7px"></a>
+				<a b-zsathhrdc6="" class="desktop-logo logo-dark active" href="#"><img src="./img/1920px-PCM-Defensa.png" class="main-logo dark-theme" alt="logo" style="border-radius:7px"></a>
+				<a b-zsathhrdc6="" class="logo-icon mobile-logo icon-light active" href="#"><img src="./img/LogoEscudo.png" class="logo-icon" alt="logo"></a>
+				<a b-zsathhrdc6="" class="logo-icon mobile-logo icon-dark active" href="#"><img src="./img/1920px-PCM-Transportes.png" class="logo-icon dark-theme" alt="logo" style="border-radius:7px"></a>
+			</div>
+			<div b-zsathhrdc6="" class="main-sidemenu mCustomScrollbar _mCS_1 mCS-autoHide" style="position: relative; overflow: visible;">
+				<div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0">
+					<div id="mCSB_1_container" class="mCSB_container" style="position: relative; top: 0px; left: 0px;" dir="ltr">
+						<div b-zsathhrdc6="" class="app-sidebar__user clearfix active">
+							<div b-zsathhrdc6="" class="dropdown user-pro-body card card-body alpha-slate m-1">
+								<div b-zsathhrdc6="" class="">
+									<img b-zsathhrdc6="" alt="user-img" class="avatar avatar-xl brround mCS_img_loaded" src="data:image/jpeg;base64,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">
+								</div>
+								<div b-zsathhrdc6="" class="user-info">
+									<h4 b-zsathhrdc6="" class="font-weight-semibold mt-3 mb-0">FERNANDO EDÚ HERRERA QUISPETIRA</h4>
+									<ol b-zsathhrdc6="" style="text-align:left; font-size:12px;color:black" class="mt-2">
+										<li b-zsathhrdc6="">REGISTRO DE ALTAS/BAJAS</li>
+										<li b-zsathhrdc6="">MONITOREO</li>
+										<li b-zsathhrdc6="">REGISTRO INTERVENCIÓN</li>
+										<li b-zsathhrdc6="">ASIGNACIÓN DE RECURSOS</li>
+										<li b-zsathhrdc6="">MONITOREO PERSONALIZADO</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+						<ul b-zsathhrdc6="" class="side-menu">
+							<li b-zsathhrdc6="" class="side-item side-item-category">ADMINISTRACIÓN DE RECURSOS</li>
+							<li b-zsathhrdc6="" class="slide">
+								<a b-zsathhrdc6="" class="side-menu__item" href="/Activo/RegistrarActivo">
+									<span b-zsathhrdc6="" class="side-menu__icon fas fa-file-contract"></span>
+									<span b-zsathhrdc6="" class="side-menu__label">Altas /Bajas</span>
+								</a>
+							</li>
+							<li b-zsathhrdc6="" class="side-item side-item-category">EMERGENCIA</li>
+							<li b-zsathhrdc6="" class="slide">
+								<a b-zsathhrdc6="" class="side-menu__item" href="/emergencia/listar">
+									<span b-zsathhrdc6="" class="side-menu__icon fas fa-ambulance"></span>
+									<span b-zsathhrdc6="" class="side-menu__label">Asignación de Recursos</span>
+								</a>
+							</li>
+							<li b-zsathhrdc6="" class="side-item side-item-category">OPERACIONES</li>
+							<li b-zsathhrdc6="" class="slide">
+								<a b-zsathhrdc6="" class="side-menu__item" href="/Activo/Ubicacion">
+									<span b-zsathhrdc6="" class="side-menu__icon fas fa-map-marker-alt"></span>
+									<span b-zsathhrdc6="" class="side-menu__label">Intervenciones</span>
+								</a>
+							</li>
+							<li b-zsathhrdc6="" class="side-item side-item-category">MONITOREO</li>
+							<li b-zsathhrdc6="" class="slide active">
+								<a b-zsathhrdc6="" class="side-menu__item active" href="/Mapa/mapaprincipal">
+									<span b-zsathhrdc6="" class="side-menu__icon fas fa-map-marked-alt"></span>
+									<span b-zsathhrdc6="" class="side-menu__label">Mapa</span>
+								</a>
+							</li>
+
+							<li b-zsathhrdc6="" class="side-item side-item-category">
+								<a b-zsathhrdc6="" class="btn btn-dark btn-sm btn-block" href="/Acceso/CerrarSesion" style="background-color:#9f1216">
+									<i b-zsathhrdc6="" class="fas fa-sign-out-alt"></i> CERRAR SESIÓN
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal mCSB_scrollTools_vertical" style="display: block;">
+					<div class="mCSB_draggerContainer">
+						<div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; height: 125px; top: 0px; display: block; max-height: 165.797px;">
+							<div class="mCSB_dragger_bar" style="line-height: 50px;"></div>
+						</div>
+						<div class="mCSB_draggerRail"></div>
+					</div>
+				</div>
+			</div>
+		</aside>
+		<!-- main-sidebar -->
+		<!-- main-content -->
+		<div b-zsathhrdc6="" class="main-content app-content">
+
+			<!-- main-header -->
+			<!-- /main-header -->
+			<!-- container -->
+			<div b-zsathhrdc6="" id="Contenedor" class="container-fluid ">
+
+
+				<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+				<link href="/css/leaflet-sidebar.css" rel="stylesheet">
+				<link href="/css/Negocio/mapaprincipal.css" rel="stylesheet">
+
+				<input id="tokenC4I" type="hidden" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxMTgiLCJuYW1lIjoib2d0aWNfNDUiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiMXwyfDN8NHw1fDZ8N3w4fDl8MTB8MTF8MTJ8MTN8MTQiLCJuYmYiOjE2ODk4NzkwNTksImV4cCI6MTY4OTk2NTQ1OSwiaWF0IjoxNjg5ODc5MDU5fQ.N4YicBqefvnDEnTglTULRVdmuwkV__39ffFHhimlMNM">
+				<input id="endpointMAESTRAS" type="hidden" value="https://svcmaestras.vivienda.gob.pe/">
+				<input id="endpointC4I" type="hidden" value="https://svcc4i.vivienda.gob.pe/">
+				<input id="endpointProgramas" type="hidden" value="1|2|3|4|5|6|7|8|9|10|11|12|13|14">
+
+				<div class="container-fluid bg-white mt-2">
+
+					<!-- Loader -->
+					<div id="pkLoader" class="loader" style="display: none;">
+						<div class="center-block">
+							<div class="loader-texto-centrado">
+								<span>CARGANDO<br> CAPA</span>
+							</div>
+						</div>
+					</div>
+					<!-- /Loader -->
+
+					<div class="row">
+
+						<div class="col-sm-12" style="margin-left: 0px; padding-left: 0px; padding-right: 0px;touch-action:auto">
+							<div class="row">
+								<div class="col-sm-12">
+									<!-- optionally define the sidebar content via HTML markup -->
+
+									<div id="barraSuperior" class="flotanteSuperior">
+										<div class="row">
+											<div class="col-sm-1">
+											</div>
+											<div class="col-sm-11 align-items-center">
+												<div class="row">
+													<div class="col-sm-1">
+														<a href="#" class="btn btn-dark horizontalslide meineclass" id="busUbigeo" role="button"><i class="fas fa-shipping-fast"></i> Buscar Emergencia</a>
+													</div>
+													<div class="col-sm-8 card card-body fondoMenuFlotante slide-opened" id="busUbigeoContent">
+														<div class="row">
+															<div class="col-sm-3">
+																<div class="form-group-sm">
+																	<label class="control-label" for="idEmergencia">Emergencia</label>
+																	<select id="idEmergencia" class="form-control form-control-sm" name="idEmergencia">
+																		<option value="0">Seleccione</option>
+																		<option value="110" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-76.24,-9.93],&amp;datos&amp;:{&amp;idEmergencia&amp;:110}}">HUANUCO</option>
+																		<option value="111" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-75.72890683,-14.0591415],&amp;datos&amp;:{&amp;idEmergencia&amp;:111}}">ICA</option>
+																		<option value="122" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-76.9742602,-6.03482163],&amp;datos&amp;:{&amp;idEmergencia&amp;:122}}">SAN MARTIN</option>
+																		<option value="123" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-70.28406575,-18.03986653],&amp;datos&amp;:{&amp;idEmergencia&amp;:123}}">TACNA</option>
+																		<option value="124" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-80.444972,-3.555278],&amp;datos&amp;:{&amp;idEmergencia&amp;:124}}">TUMBES</option>
+																		<option value="104" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-71.51454,-16.395562],&amp;datos&amp;:{&amp;idEmergencia&amp;:104}}">AREQUIPA</option>
+																		<option value="105" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-74.20816623,-13.16009982],&amp;datos&amp;:{&amp;idEmergencia&amp;:105}}">AYACUCHO</option>
+																		<option value="106" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-78.50739908,-7.14343316],&amp;datos&amp;:{&amp;idEmergencia&amp;:106}}">CAJAMARCA</option>
+																		<option value="108" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-71.61769965,-13.26923285],&amp;datos&amp;:{&amp;idEmergencia&amp;:108}}">CUSCO</option>
+																		<option value="112" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-75.4992683,-11.77632564],&amp;datos&amp;:{&amp;idEmergencia&amp;:112}}">JUNIN</option>
+																		<option value="113" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-79.00003683,-8.1055875],&amp;datos&amp;:{&amp;idEmergencia&amp;:113}}">LA LIBERTAD</option>
+																		<option value="114" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-79.85518128,-6.76596174],&amp;datos&amp;:{&amp;idEmergencia&amp;:114}}">LAMBAYEQUE</option>
+																		<option value="116" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-73.302855,-3.793764],&amp;datos&amp;:{&amp;idEmergencia&amp;:116}}">LORETO</option>
+																		<option value="117" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-69.18443963,-12.59656173],&amp;datos&amp;:{&amp;idEmergencia&amp;:117}}">MADRE DE DIOS</option>
+																		<option value="118" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-70.93273635,-17.1953191],&amp;datos&amp;:{&amp;idEmergencia&amp;:118}}">MOQUEGUA</option>
+																		<option value="120" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-80.69036018,-5.16767531],&amp;datos&amp;:{&amp;idEmergencia&amp;:120}}">PIURA</option>
+																		<option value="121" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-70.13216868,-15.50170882],&amp;datos&amp;:{&amp;idEmergencia&amp;:121}}">PUNO</option>
+																		<option value="125" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-74.62173285,-8.39343316],&amp;datos&amp;:{&amp;idEmergencia&amp;:125}}">UCAYALI</option>
+																		<option value="102" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-77.5390332,-9.49349934],&amp;datos&amp;:{&amp;idEmergencia&amp;:102}}">ANCASH</option>
+																		<option value="101" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-78.43925995,-5.83853184],&amp;datos&amp;:{&amp;idEmergencia&amp;:101}}">AMAZONAS</option>
+																		<option value="115" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-76.8014709,-11.95857337],&amp;datos&amp;:{&amp;idEmergencia&amp;:115}}">LIMA</option>
+																		<option value="107" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-77.123211662,-12.044544115],&amp;datos&amp;:{&amp;idEmergencia&amp;:107}}">CALLAO</option>
+																		<option value="109" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-74.974417782,-12.78596274],&amp;datos&amp;:{&amp;idEmergencia&amp;:109}}">HUANCAVELICA</option>
+																		<option value="103" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-72.889215787,-13.63775591],&amp;datos&amp;:{&amp;idEmergencia&amp;:103}}">APURIMAC</option>
+																		<option value="119" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-76.262449709,-10.677668047],&amp;datos&amp;:{&amp;idEmergencia&amp;:119}}">PASCO</option>
+																		<option value="201" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-78.43925995,-5.83853184],&amp;datos&amp;:{&amp;idEmergencia&amp;:201}}">FEN-2023 AMAZONAS</option>
+																		<option value="202" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-77.5390332,-9.49349934],&amp;datos&amp;:{&amp;idEmergencia&amp;:202}}">FEN-2023 ANCASH</option>
+																		<option value="204" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-71.51454,-16.395562],&amp;datos&amp;:{&amp;idEmergencia&amp;:204}}">FEN-2023 AREQUIPA</option>
+																		<option value="205" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-74.20816623,-13.16009982],&amp;datos&amp;:{&amp;idEmergencia&amp;:205}}">FEN-2023 AYACUCHO</option>
+																		<option value="206" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-78.50739908,-7.14343316],&amp;datos&amp;:{&amp;idEmergencia&amp;:206}}">FEN-2023 CAJAMARCA</option>
+																		<option value="209" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-74.974417782,-12.78596274],&amp;datos&amp;:{&amp;idEmergencia&amp;:209}}">FEN-2023 HUANCAVELICA</option>
+																		<option value="210" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-76.24,-9.93],&amp;datos&amp;:{&amp;idEmergencia&amp;:210}}">FEN-2023 HUANUCO</option>
+																		<option value="211" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-75.72890683,-14.0591415],&amp;datos&amp;:{&amp;idEmergencia&amp;:211}}">FEN-2023 ICA</option>
+																		<option value="212" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-75.4992683,-11.77632564],&amp;datos&amp;:{&amp;idEmergencia&amp;:212}}">FEN-2023 JUNIN</option>
+																		<option value="213" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-79.00003683,-8.1055875],&amp;datos&amp;:{&amp;idEmergencia&amp;:213}}">FEN-2023 LA LIBERTAD</option>
+																		<option value="214" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-79.85518128,-6.76596174],&amp;datos&amp;:{&amp;idEmergencia&amp;:214}}">FEN-2023 LAMBAYEQUE</option>
+																		<option value="215" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-76.8014709,-11.95857337],&amp;datos&amp;:{&amp;idEmergencia&amp;:215}}">FEN-2023 LIMA</option>
+																		<option value="218" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-70.93273635,-17.1953191],&amp;datos&amp;:{&amp;idEmergencia&amp;:218}}">FEN-2023 MOQUEGUA</option>
+																		<option value="219" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-76.262449709,-10.677668047],&amp;datos&amp;:{&amp;idEmergencia&amp;:219}}">FEN-2023 PASCO</option>
+																		<option value="220" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-80.69036018,-5.16767531],&amp;datos&amp;:{&amp;idEmergencia&amp;:220}}">FEN-2023 PIURA</option>
+																		<option value="222" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-76.9742602,-6.03482163],&amp;datos&amp;:{&amp;idEmergencia&amp;:222}}">FEN-2023 SAN MARTIN</option>
+																		<option value="223" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-70.28406575,-18.03986653],&amp;datos&amp;:{&amp;idEmergencia&amp;:223}}">FEN-2023 TACNA</option>
+																		<option value="224" data-shape="{&amp;type&amp;:&amp;Point&amp;,&amp;coordinates&amp;:[-80.444972,-3.555278],&amp;datos&amp;:{&amp;idEmergencia&amp;:224}}">FEN-2023 TUMBES</option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-sm-2">
+																<div id="mainSel" class="form-group-sm">
+																	<label class="control-label" for="cboPrograma">Programa</label>
+																	<select id="cboPrograma" name="cboPrograma" class="form-control form-control-sm" multiple="multiple" style="display: none;">
+																		<option value="11">ANA</option>
+																		<option value="6">INDECI</option>
+																		<option value="12">INGEMMET</option>
+																		<option value="10">MIDAGRI</option>
+																		<option value="8">MINDEF</option>
+																		<option value="14">MININTER</option>
+																		<option value="13">MINSA</option>
+																		<option value="7">MTC</option>
+																		<option value="1">OTASS</option>
+																		<option value="5">PASLC</option>
+																		<option value="2">PNC</option>
+																		<option value="4">PNSR</option>
+																		<option value="3">PNSU</option>
+																		<option value="9">PROVIAS NACIONAL</option>
+																	</select>
+																	<div class="bg-white"><button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="ANA, INDECI, INGEMMET, MIDAGRI, MINDEF, MININTER, MINSA, MTC, OTASS, PASLC, PNC, PNSR, PNSU, PROVIAS NACIONAL"><span class="multiselect-selected-text">Todos (14)</span> <b class="caret"></b></button>
+																		<ul class="multiselect-container dropdown-menu">
+																			<li class="multiselect-item multiselect-all active"><a tabindex="0" class="multiselect-all"><label class="checkbox"><input type="checkbox" value="multiselect-all"> Seleccionar todo</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="11"> ANA</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="6"> INDECI</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="12"> INGEMMET</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="10"> MIDAGRI</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="8"> MINDEF</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="14"> MININTER</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="13"> MINSA</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="7"> MTC</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="1"> OTASS</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="5"> PASLC</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="2"> PNC</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="4"> PNSR</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="3"> PNSU</label></a></li>
+																			<li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="9"> PROVIAS NACIONAL</label></a></li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div class="col-sm-2  mt-3">
+																<div class="form-group-sm">
+																	<a href="#" id="btnMostrarUnidades" class="btn btn-light btn-block bold" role="button"><i class="fa-solid fa-cube"></i>&nbsp;&nbsp;<label id="lblTextUnidad">Mostrar</label></a>
+																</div>
+															</div>
+															<div class="col-sm-2  mt-3">
+																<div class="form-group-sm">
+																	<a href="#" id="btnLimpiarCapas" class="btn btn-light btn-block bold" role="button"><i class="fas fa-eraser"></i>&nbsp;&nbsp;Limpiar</a>
+																</div>
+															</div>
+															<div class="col-sm-1  mt-3">
+																<div class="form-group-sm">
+																	<a href="#" id="btnZoomIn" class="btn btn-light btn-block" role="button" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="Acercar"><i class="fas fa-search-plus fa-lg"></i></a>
+																</div>
+															</div>
+															<div class="col-sm-1  mt-3">
+																<div class="form-group-sm">
+																	<a href="#" id="btnZoomOut" class="btn btn-light btn-block" role="button" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="Alejar"><i class="fas fa-search-minus fa-lg"></i></a>
+																</div>
+															</div>
+															<div class="col-sm-1  mt-3">
+																<div class="form-group-sm">
+																	<a href="#" id="btnFullScreem" class="btn btn-light btn-block" role="button" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="Pantalla Completa"><i class="fas fa-expand fa-lg"></i></a>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-1">
+														<a href="#" class="btn btn-dark horizontalslide meineclass" id="busPlaca" role="button"><i class="fas fa-truck @*fa-2xl*@"></i> Buscar Placa</a>
+													</div>
+													<div class="col-sm-8 card card-body fondoMenuFlotante" style="display: none;" id="busPlacaContent">
+														<div class="row">
+															<div class="col-md-4">
+																<div class="form-group-sm">
+																	<label class="control-label bold" for="iPlaca">Placa</label>
+																	<input class="form-control form-control-sm" placeholder="Ingrese N° de Placa" type="text" maxlength="30" id="iPlaca" name="iPlaca">
+																</div>
+															</div>
+															<div class="col-md-8 mt-3">
+																<div class="btn-group">
+																	<a href="#" id="btnBuscarPlaca" class="btn btn-light btn-rounded bold" role="button"><i class="fas fa-search"></i> Buscar</a>
+																	<a href="#" id="btnlimpiarPlaca" class="btn btn-light btn-rounded ml-2 bold" role="button"><i class="fas fa-eraser"></i> Limpiar</a>
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+
+									<div id="mapid" style="height: 98vh; width: 100%; position: relative; outline: none;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
+										<div id="sidebar" class="leaflet-sidebar collapsed leaflet-control leaflet-sidebar-left leaflet-touch" style="z-index: 800">
+
+											<!-- nav tabs -->
+											<div class="leaflet-sidebar-tabs">
+												<!-- top aligned tabs -->
+												<ul role="tablist">
+													<li><a href="#home" role="tab" title="" data-placement="right" data-toggle="tooltip" data-original-title="PRINCIPAL"><i class="fa fa-bars"></i></a></li>
+													<li><a href="#autopan" role="tab" title="" data-placement="right" data-toggle="tooltip" data-original-title="CAPAS"><i class="fas fa-layer-group"></i></a></li>
+													<li><a href="#reportesbi" role="tab" title="" data-placement="right" data-toggle="tooltip" data-original-title="TABLERO"><i class="fas fa-file-invoice"></i></a></li>
+													<li><a href="#informacionunidad" role="tab" title="" data-placement="right" data-toggle="tooltip" data-original-title="INFORMACIÓN DEl RECURSO"><i class="fas fa-info-circle"></i></a></li>
+													<li><a href="#controlMapa" role="tab" title="" data-placement="right" data-toggle="tooltip" data-original-title="MAPAS"><i class="fas fa-map"></i></a></li>
+												</ul>
+												<ul class=""></ul>
+											</div>
+
+											<!-- panel content -->
+											<div class="leaflet-sidebar-content">
+												<div class="leaflet-sidebar-pane active" id="home">
+													<h1 class="leaflet-sidebar-header">
+														RESUMEN GENERAL
+														<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+													</h1>
+													<div>
+														<div class="row row-sm pt-3">
+															<div class="col-lg-6 col-xl-6 col-md-6 col-12">
+																<div class="card bg-primary-gradient text-white ">
+																	<div class="card-body">
+																		<div class="row">
+																			<div class="col-6">
+																				<div class="icon1 mt-2 text-center">
+																					<i class="fas fa-truck tx-40"></i>
+																				</div>
+																			</div>
+																			<div class="col-6">
+																				<div class="mt-0 text-center">
+																					<span class="text-white">Recursos</span>
+																					<h2 class="text-white mb-0 tx-22" id="lblUnidades">2925</h2>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-lg-6 col-xl-6 col-md-6 col-12">
+																<div class="card bg-success-gradient text-white">
+																	<div class="card-body">
+																		<div class="row">
+																			<div class="col-6">
+																				<div class="icon1 mt-2 text-center">
+																					<i class="fas fa-map-marked-alt tx-40"></i>
+																				</div>
+																			</div>
+																			<div class="col-6">
+																				<div class="mt-0 text-center">
+																					<span class="text-white">Asignados</span>
+																					<h2 class="text-white mb-0 tx-22" id="lblAsignados">1917</h2>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row row-sm">
+															<div class="col-lg-6 col-xl-6 col-md-6 col-12">
+																<div class="card bg-danger-gradient text-white">
+																	<div class="card-body">
+																		<div class="row">
+																			<div class="col-4">
+																				<div class="icon1 mt-2 text-center">
+																					<i class="fas fa-shipping-fast tx-40"></i>
+																				</div>
+																			</div>
+																			<div class="col-8">
+																				<div class="mt-0 text-center">
+																					<span class="text-white">Intervenciones</span>
+																					<h2 class="text-white mb-0 tx-22" id="lblIntervenciones">43</h2>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-lg-6 col-xl-6 col-md-6 col-12">
+																<div class="card bg-success-gradient text-white">
+																	<div class="card-body">
+																		<div class="row">
+																			<div class="col-4">
+																				<div class="icon1 mt-2 text-center">
+																					<i class="fas fa-tools tx-40"></i>
+																				</div>
+																			</div>
+																			<div class="col-8">
+																				<div class="mt-0 text-center">
+																					<span class="text-white">Mantenimiento</span>
+																					<h2 class="text-white mb-0 tx-22" id="lblMantenimiento">103</h2>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<hr>
+														<div id="DivContenedor" style="height: 400px; width: 100%;">
+															<!--<div id="chartContainer" style="height: 370px; width: 100%;"></div>-->
+															<canvas id="MeSeStatusCanvas" style="display: block; box-sizing: border-box; height: 400px; width: 380px;" width="380" height="400"></canvas>
+														</div>
+
+
+													</div>
+													<p></p>
+												</div>
+
+												<div class="leaflet-sidebar-pane" id="autopan">
+													<h1 class="leaflet-sidebar-header">
+														CAPAS
+														<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+													</h1>
+													<div>
+
+														<div class="card mt-2 alpha-slate">
+															<div class="card-header card-tittle bold" style="padding: 5px;">
+																LEYENDA (Colores)
+															</div>
+															<div class="card-body" style="padding: 5px;">
+																<div class="row">
+																	<div class="col-sm-1">
+																		<div class="btn w-100" style="background-color:#F4CD36"></div>
+																	</div>
+																	<div class="col-sm-5">Programadas</div>
+																	<div class="col-sm-1">
+																		<div class="btn w-100" style="background-color:#0C71F5"></div>
+																	</div>
+																	<div class="col-sm-5">FEN</div>
+																</div>
+																<div class="row">
+																	<div class="col-sm-1">
+																		<div class="btn w-100" style="background-color:#50b166"></div>
+																	</div>
+																	<div class="col-sm-5">Existentes</div>
+																	<div class="col-sm-1">
+																		<div class="btn w-100" style="background-color:#DE2415"></div>
+																	</div>
+																	<div class="col-sm-5">Estado crítico</div>
+																</div>
+															</div>
+														</div>
+														<ul id="tree1" class="tree">
+															<li class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																Nacional
+																<ul>
+																	<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		MIDAGRI
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				ANA
+																				<ul>
+																					<li style="display: none;">
+																						<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 1)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																					</li>
+																					<li style="display: none;">
+																						<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 16)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones FEN</div>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		MTC
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				PVD
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						Infraestructura Existente
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 41)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Modulares</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 42)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puente Losa</div>
+																							</li>
+																						</ul>
+																					</li>
+																					<li style="display: none;">
+																						<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 40)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		MVCS
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				PASLC
+																				<ul>
+																					<li style="display: none;">
+																						<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 37)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Interveciones Programadas</div>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				PNC
+																				<ul>
+																					<li style="display: none;">
+																						<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 38)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Interveciones Programadas</div>
+																					</li>
+																					<li style="display: none;">
+																						<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 39)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Interveciones FEN</div>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				PNSU
+																				<ul>
+																					<li style="display: none;">
+																						<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 26)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Interveciones Programadas</div>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		PCM
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				ARCC
+																				<ul>
+																					<li style="display: none;">
+																						<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 105)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;">
+																		<div class="btn btn-light-gradient text-left drawshape w-100" data-idshape="3" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Departamento</div>
+																	</li>
+																	<li style="display: none;">
+																		<div class="btn btn-light-gradient text-left drawshape w-100" data-idshape="4" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Provincia</div>
+																	</li>
+																	<li style="display: none;">
+																		<div class="btn btn-light-gradient text-left drawshape w-100" data-idshape="5" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Distrito</div>
+																	</li>
+																</ul>
+															</li>
+															<li class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																Regional
+																<ul>
+																	<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Amazonas
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 67)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Áncash
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MIDAGRI
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ANA
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 17)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 68)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MTC
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PVD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 43)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 2)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 3)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones FEN</div>
+																							</li>
+																						</ul>
+																					</li>
+																					<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNSU
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 27)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				PCM
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ARCC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 106)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Apurimac
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 69)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Arequipa
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 70)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Ayacucho
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 71)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MTC
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PVD
+																						<ul>
+																							<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																								Infraestructura Existente
+																								<ul>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 44)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Modulares</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 45)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Losa</div>
+																									</li>
+																								</ul>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Cajamarca
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 72)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MTC
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PVD
+																						<ul>
+																							<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																								Infraestructura Existente
+																								<ul>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 46)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Modulares</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 47)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Losa</div>
+																									</li>
+																								</ul>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNSU
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 28)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Cusco
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 74)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Huancavelica
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 75)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Huánuco
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 76)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MTC
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PVD
+																						<ul>
+																							<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																								Infraestructura Existente
+																								<ul>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 50)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Losa</div>
+																									</li>
+																								</ul>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNSU
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 29)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Ica
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 77)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MIDAGRI
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ANA
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 25)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 4)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 5)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones FEN</div>
+																							</li>
+																						</ul>
+																					</li>
+																					<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNSU
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 30)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				PCM
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ARCC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 107)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Junín
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 78)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		La Libertad
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				GORE
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						Infraestructura Existente
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 55)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Zonas inundables</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 56)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puntos críticos lluvia</div>
+																							</li>
+
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MIDAGRI
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ANA
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 18)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 19)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones FEN</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 79)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MTC
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PVD
+																						<ul>
+																							<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																								Infraestructura Existente
+																								<ul>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 51)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Losa</div>
+																									</li>
+																								</ul>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 6)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 7)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones FEN</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				PCM
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ARCC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 108)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Lambayeque
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				GORE
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						Infraestructura Existente
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 61)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Cuencas Ciegas Identificadas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 58)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Colectores</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 59)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Drenes</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 60)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Acequias</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 73)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MIDAGRI
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ANA
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 20)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MTC
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PVD
+																						<ul>
+																							<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																								Infraestructura Existente
+																								<ul>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 48)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Modulares</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 49)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Losa</div>
+																									</li>
+																								</ul>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 57)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 8)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 9)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones FEN</div>
+																							</li>
+																						</ul>
+																					</li>
+																					<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNSU
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 31)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				PCM
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ARCC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 109)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Lima
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MIDAGRI
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ANA
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 21)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 22)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones FEN</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 80)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PASLC
+																						<ul>
+																							<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																								Infraestructura Existente
+																								<ul>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 62)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Acequias</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left drawshape w-100" data-idshape="17" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Distritos Mayor Riesgo</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 63)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Límites</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 64)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Quebradas Yaku</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 66)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Quebradas</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 65)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Rios</div>
+																									</li>
+																								</ul>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 37)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones</div>
+																							</li>
+																						</ul>
+																					</li>
+																					<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 10)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 11)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones FEN</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				PCM
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ARCC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 110)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Loreto
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 81)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNSU
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 32)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Madre de Dios
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 82)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Moquegua
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 83)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MTC
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PVD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 52)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Losa</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNSU
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 33)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Pasco
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 84)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Piura
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				GORE
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						Infraestructura Existente
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 91)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Cuencas Ciegas Identificadas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 98)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Cuencas Ciegas Modeladas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 92)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Canal de riego</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 93)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Compuertas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 94)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Diques</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 95)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Drenes</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 96)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Presa</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MIDAGRI
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ANA
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 23)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 85)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MTC
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PVD
+																						<ul>
+																							<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																								Infraestructura Existente
+																								<ul>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 53)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Modulares</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 54)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Puentes Losa</div>
+																									</li>
+																								</ul>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 97)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 12)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 13)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones FEN</div>
+																							</li>
+																						</ul>
+																					</li>
+																					<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNSU
+																						<ul>
+																							<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																								Intervenciones Programadas
+																								<ul>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left drawshapesection w-100" data-idshape="5" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Caseta Bombeo Chilcal</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left drawshapesection w-100" data-idshape="4" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Caseta Bombeo Ignacio Merino</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left drawshapesection w-100" data-idshape="3" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Caseta Av. Gullman</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left drawshapesection w-100" data-idshape="2" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Caseta Av. Tacna</div>
+																									</li>
+																									<li style="display: none;">
+																										<div class="btn btn-light-gradient text-left drawshapesection w-100" data-idshape="1" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Sector 05 esquinas</div>
+																									</li>
+																								</ul>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				PCM
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ARCC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 111)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Puno
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 86)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNSU
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 34)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		San Martín
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 87)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNSU
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 35)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Tacna
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 88)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNSU
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 36)" role="button"><i class="fas fa-map-marker"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Tumbes
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MIDAGRI
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ANA
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 24)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 89)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MVCS
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						PNC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 14)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones Proyectadas - Programado</div>
+																							</li>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 15)" role="button"><i class="bx bx-stats"></i>&nbsp;&nbsp;Intervenciones Proyectadas - Adicional</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																			<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				PCM
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						ARCC
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 112)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Intervenciones Programadas</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																	<li style="display: none;" class="branch"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																		Ucayali
+																		<ul>
+																			<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																				MINSA
+																				<ul>
+																					<li class="branch" style="display: none;"><i class="indicator glyphicon fas fa-plus-circle"></i>
+																						SUSALUD
+																						<ul>
+																							<li style="display: none;">
+																								<div class="btn btn-light-gradient text-left w-100 drawshapemulti" onclick="pintarmultishapes(this, 90)" role="button"><i class="fas fa-draw-polygon"></i>&nbsp;&nbsp;Infraestructura Existente</div>
+																							</li>
+																						</ul>
+																					</li>
+																				</ul>
+																			</li>
+																		</ul>
+																	</li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+												</div>
+
+												<div class="leaflet-sidebar-pane" id="reportesbi">
+													<h1 class="leaflet-sidebar-header">
+														TABLERO
+														<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+													</h1>
+													<div>
+														<div class="alpha-grey">
+															<div class="row mt-1 mb-1">
+																<div class="col-sm-12">
+																	<a class="btn btn-dark-gradient btn-block" target="_blank" href="https://app.powerbi.com/view?r=eyJrIjoiNzI3MTAzNWItYTk1MC00YjVkLWJkOWQtOWYxYzFiYzMwZDEwIiwidCI6IjhhZmMxYzZhLThjOWYtNDA5My1iMDU1LWU0MTdiMjA5M2IwYyIsImMiOjR9" style="color:white"><i class="fas fa-file-invoice"></i>&nbsp;&nbsp;Reportes</a>
+																</div>
+															</div>
+														</div>
+													</div>
+													<p></p>
+												</div>
+
+												<div class="leaflet-sidebar-pane" id="informacionunidad">
+													<h1 class="leaflet-sidebar-header">
+														INFORMACIÓN DEL RECURSO
+														<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+													</h1>
+													<div class="card mt-2 alpha-slate">
+														<div class="card-body">
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Emergencia :</label></div>
+																<div class="col-lg-7"><span id="spDescripcionEmergencia"></span></div>
+																<input id="hd_codDptoEmergencia" type="hidden">
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Departamento :</label></div>
+																<div class="col-lg-7"><span id="spDepartamento"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Provincia :</label></div>
+																<div class="col-lg-7"><span id="spProvincia"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Distrito :</label></div>
+																<div class="col-lg-7"><span id="spDistrito"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Propietario :</label></div>
+																<div class="col-lg-7"><span id="spPrograma"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Tipo Recurso :</label></div>
+																<div class="col-lg-7"><span id="spTipoUnidad"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Placa :</label></div>
+																<div class="col-lg-7"><span id="spPlacaBase"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Estado del Recurso:</label></div>
+																<div class="col-lg-7"><span id="spEstado"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Sub Estado :</label></div>
+																<div class="col-lg-7"><span id="spSubEstado"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Situación :</label></div>
+																<div class="col-lg-7"><span id="spSituacion"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Coordenadas Lat:</label></div>
+																<div class="col-lg-7"><span id="spCoordenadasLat"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Coordenadas Long:</label></div>
+																<div class="col-lg-7"><span id="spCoordenadasLong"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Velocidad:</label></div>
+																<div class="col-lg-7"><span id="dVelocidad"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Rumbo:</label></div>
+																<div class="col-lg-7"><span id="dRumbo"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Personas Benef. :</label></div>
+																<div class="col-lg-7"><span id="spPersonasBeneficiadas"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Viviendas Benef. :</label></div>
+																<div class="col-lg-7"><span id="spViviendasBeneficiadas"></span></div>
+															</div>
+															<div class="row">
+																<div class="col-lg-5"><label class="control-label bold">Fecha Hora :</label></div>
+																<div class="col-lg-7"><span id="spFechaHora"></span></div>
+															</div>
+														</div>
+													</div>
+													<div class="card mt-2 alpha-slate">
+														<div class="card-header card-tittle bold">
+															EVIDENCIA (FOTOS)
+														</div>
+														<div class="card-body">
+															<div class="row">
+																<div id="sliderGeneral" class="carousel-slider" style="display:none; margin:0 auto; width:150px">
+																	<div id="carousel" class="carousel slide" data-ride="carousel">
+																		<div id="sliderImagenes" class="carousel-inner">
+																		</div>
+																		<a class="carousel-control-prev leafletSlider" href="#carousel" role="button" data-slide="prev">
+																			<i class="fa fa-angle-left fs-30" aria-hidden="true"></i>
+																		</a>
+																		<a class="carousel-control-next leafletSlider" href="#carousel" role="button" data-slide="next">
+																			<i class="fa fa-angle-right fs-30" aria-hidden="true"></i>
+																		</a>
+																	</div>
+																</div>
+															</div>
+															<br>
+															<div id="ImagenP" class="row" style="display:none; margin:0 auto">
+																<img id="ImgCentral" src="" alt="img" class="img-fluid hv-100" style="width:100%; height:250px"><br>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="leaflet-sidebar-pane" id="controlMapa">
+													<h1 class="leaflet-sidebar-header">
+														MAPAS
+														<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+													</h1>
+													<div>
+														<div class="row mt-2">
+															<div class="col-lg-6"><a id="btnGoogleMaps" href="#" class="btn-3d red w-100"><i class="fas fa-map"></i>&nbsp;&nbsp;Google Maps</a></div>
+															<div class="col-lg-6"><a id="btnGoogleEarth" href="#" class="btn-3d red w-100"><i class="fas fa-globe-americas"></i>&nbsp;&nbsp;Google Earth</a></div>
+														</div>
+														<div class="row">
+															<div class="col-lg-6"><a id="btnStreetView" href="#" class="btn-3d red w-100"><i class="fas fa-road"></i>&nbsp;&nbsp;Open Street</a></div>
+														</div>
+													</div>
+													<p></p>
+												</div>
+
+												<div class="leaflet-sidebar-pane" id="messages">
+													<h1 class="leaflet-sidebar-header">Messages<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+												</div>
+											</div>
+										</div>
+										<div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-3px, -198px, 0px);">
+											<div class="leaflet-pane leaflet-tile-pane">
+												<div class="leaflet-layer " style="z-index: 1; opacity: 1;">
+													<div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 20; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=18&amp;y=33&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(329px, 209px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=19&amp;y=33&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(585px, 209px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=18&amp;y=32&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(329px, -47px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=19&amp;y=32&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(585px, -47px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=18&amp;y=34&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(329px, 465px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=19&amp;y=34&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(585px, 465px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=17&amp;y=33&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(73px, 209px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=20&amp;y=33&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(841px, 209px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=17&amp;y=32&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(73px, -47px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=20&amp;y=32&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(841px, -47px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=17&amp;y=34&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(73px, 465px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=20&amp;y=34&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(841px, 465px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=16&amp;y=33&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-183px, 209px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=21&amp;y=33&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1097px, 209px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=16&amp;y=32&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-183px, -47px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=21&amp;y=32&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1097px, -47px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=16&amp;y=34&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-183px, 465px, 0px); opacity: 1;"><img alt="" src="https://mt1.google.com/vt/lyrs=r&amp;x=21&amp;y=34&amp;z=6" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1097px, 465px, 0px); opacity: 1;"></div>
+												</div>
+											</div>
+											<div class="leaflet-pane leaflet-overlay-pane"></div>
+											<div class="leaflet-pane leaflet-shadow-pane"></div>
+											<div class="leaflet-pane leaflet-marker-pane"></div>
+											<div class="leaflet-pane leaflet-tooltip-pane"></div>
+											<div class="leaflet-pane leaflet-popup-pane"></div>
+											<div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(4914px, 8546px, 0px) scale(32);"></div>
+										</div>
+										<div class="leaflet-control-container">
+											<div class="leaflet-top leaflet-left">
+												<div class="leaflet-control-zoom leaflet-bar leaflet-control" style="display: none;"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false" style="display: none;"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false" style="display: none;"><span aria-hidden="true">−</span></a><a class="leaflet-control-zoom-fullscreen fullscreen-icon" href="#" title="Full Screen" role="button" aria-label="Full Screen"></a></div>
+											</div>
+											<div class="leaflet-top leaflet-right">
+												<div class="leaflet-control-layers leaflet-control" aria-haspopup="true" style="display: none;"><a class="leaflet-control-layers-toggle" href="#" title="Layers" role="button"></a>
+													<section class="leaflet-control-layers-list">
+														<option>departamento</option>
+													</section>
+												</div>
+											</div>
+											<div class="leaflet-bottom leaflet-left"></div>
+											<div class="leaflet-bottom leaflet-right">
+												<div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag">
+															<path fill="#4C7BE1" d="M0 0h12v4H0z"></path>
+															<path fill="#FFD500" d="M0 4h12v3H0z"></path>
+															<path fill="#E0BC00" d="M0 7h12v1H0z"></path>
+														</svg> Leaflet</a></div>
+											</div>
+										</div>
+									</div>
+
+									<div id="column" class="flotanteDerecho">
+
+
+										<div class="row">
+											<div class="col">
+											</div>
+											<div class="col">
+												<div id="btnOcultarColumna" class="fa-pull-right" style="margin: 0 5px 5px 0; cursor:pointer"><i id="iconDerecha" class="fa fa-chevron-up" aria-hidden="true"></i></div>
+											</div>
+
+										</div>
+										<div class="row">
+											<div class="col">
+												<button id="btnBuscarCom" class="btn btn-dark mt-1 mb-1 maquinaria btn-block  btn-sm" data-idmaquina="25" data-placement="left" data-toggle="tooltip" title="" type="button" data-original-title="Almacén"><span class="badge badge-light">23</span><i class="icoAlmacen"></i></button>
+												<button id="btnBuscarCom" class="btn btn-dark mt-1 mb-1 maquinaria btn-block  btn-sm" data-idmaquina="30" data-placement="left" data-toggle="tooltip" title="" type="button" data-original-title="Ambulancia"><span class="badge badge-light">7</span><i class="icoAmbulancia"></i></button>
+												<button id="btnBuscarCom" class="btn btn-dark mt-1 mb-1 maquinaria btn-block  btn-sm" data-idmaquina="51" data-placement="left" data-toggle="tooltip" title="" type="button" data-original-title="Avión"><span class="badge badge-light">0</span><i class="icoAvion"></i></button>
+
+											</div>
+											<div class="col">
+												<button id="btnBuscarCom" class="btn btn-dark mt-1 mb-1 maquinaria btn-block  btn-sm" data-idmaquina="37" data-placement="left" data-toggle="tooltip" title="" type="button" data-original-title="Grupo Intervención Rápida"><span class="badge badge-light">42</span><i class="icoGrupoIntervencionRapida"></i></button>
+												<button id="btnBuscarCom" class="btn btn-dark mt-1 mb-1 maquinaria btn-block  btn-sm" data-idmaquina="50" data-placement="left" data-toggle="tooltip" title="" type="button" data-original-title="Helicóptero"><span class="badge badge-light">0</span><i class="icoHelicoptero"></i></button>
+												<button id="btnBuscarCom" class="btn btn-dark mt-1 mb-1 maquinaria btn-block  btn-sm" data-idmaquina="9" data-placement="left" data-toggle="tooltip" title="" type="button" data-original-title="Hidrojet"><span class="badge badge-light">47</span><i class="icoHidrojet"></i></button>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			<!-- Container closed -->
+		</div>
+		<!-- main-content closed -->
+		<!-- Footer opened -->
+		<!-- Footer closed -->
+
+	</div>
+	<!-- End Page -->
+	<!-- Back-to-top -->
+
+
+
+	<script>
+		async function llenarcombos() {
+			mostrarEmergencias();
+			await mostrarProgramas();
+			mostrarDataResumen();
+			mostrarDataResumenUnidades();
+		}
+
+
+		llenarcombos();
+
+		// create the sidebar instance and add it to the map
+		var sidebar = L.control.sidebar({
+				container: 'sidebar',
+				collapsed: true
+			})
+			.addTo(mapL);
+		// be notified when a panel is opened
+		sidebar.on('content', function(ev) {
+			switch (ev.id) {
+				case 'autopan':
+					sidebar.options.autopan = false;
+					break;
+				default:
+					sidebar.options.autopan = false;
+			}
+		});
+		var userid = 0
+
+		function addUser() {
+			sidebar.addPanel({
+				id: 'user' + userid++,
+				tab: '<i class="fa fa-user"></i>',
+				title: 'User Profile ' + userid,
+				pane: '<p>user ipsum dolor sit amet</p>',
+			});
+		}
+
+
+		$.fn.extend({
+			treed: function(o) {
+
+				var openedClass = 'fas fa-minus-circle';
+				var closedClass = 'fas fa-plus-circle';
+
+				if (typeof o != 'undefined') {
+					if (typeof o.openedClass != 'undefined') {
+						openedClass = o.openedClass;
+					}
+					if (typeof o.closedClass != 'undefined') {
+						closedClass = o.closedClass;
+					}
+				};
+
+				//initialize each of the top levels
+				var tree = $(this);
+				tree.addClass("tree");
+				tree.find('li').has("ul").each(function() {
+					var branch = $(this); //li with children ul
+					branch.prepend("<i class='indicator glyphicon " + closedClass + "'></i>");
+					branch.addClass('branch');
+					branch.on('click', function(e) {
+						if (this == e.target) {
+							var icon = $(this).children('i:first');
+							icon.toggleClass(openedClass + " " + closedClass);
+							$(this).children().children().toggle();
+						}
+					})
+					branch.children().children().toggle();
+				});
+				//fire event from the dynamically added icon
+				tree.find('.branch .indicator').each(function() {
+					$(this).on('click', function() {
+						$(this).closest('li').click();
+					});
+				});
+				//fire event to open branch if the li contains an anchor instead of text
+				tree.find('.branch>a').each(function() {
+					$(this).on('click', function(e) {
+						$(this).closest('li').click();
+						e.preventDefault();
+					});
+				});
+				//fire event to open branch if the li contains a button instead of text
+				tree.find('.branch>button').each(function() {
+					$(this).on('click', function(e) {
+						$(this).closest('li').click();
+						e.preventDefault();
+					});
+				});
+			}
+		});
+
+		//Initialization of treeviews
+
+		$('#tree1').treed();
+	</script>
+
+
+
+	<div class="main-navbar-backdrop"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+	<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+</body>
+
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="L.TileLayer.BetterWMS.js"></script>
+
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="./js/custom.js"></script>
+<script src="./js/eva-icons.min.js"></script>
+<script src="./js/ionicons.js"></script>
+<script src="./js/jquery.barrating.js"></script>
+<script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./js/jquery.rating-stars.js"></script>
+<script src="./js/moment.js"></script>
+<script src="./js/sidebar-custom.js"></script>
+<script src="./js/sidebar.js"></script>
+<script src="./js/leaflet-sidebar.js"></script>
+<script src="./js/jquery.validate.min.js"></script>
+<script src="./js/chart.flot.sampledata.js"></script>
+<script src="./js/modal-popup.js"></script>
+<script src="script.js"></script>
+
+</html>

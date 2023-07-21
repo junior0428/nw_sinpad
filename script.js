@@ -4,6 +4,7 @@ var mapL = L.map('map', {
     center: [-7.732765062729807, -72.03735351562501],
     zoom: 6,
     layers: [marcadores],
+	zoomControl:true,
     fullscreenControl: true,
     fullscreenControlOptions: {
         position: 'topleft'
@@ -36,12 +37,12 @@ var tiles3 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 });
 
 // Servicios web
-
+/*
 var layer = L.tileLayer.betterWms("https://geoc4i.vivienda.gob.pe/geoserver/c4i/wms?", {
     layers: 'c4i:fc_limite_dpto',
     format: 'image/png',
     transparent: true
-}).addTo(mapL);
+}).addTo(mapL);*/
 
 var basemaps = {
     Departamento: L.tileLayer.wms('https://geoc4i.vivienda.gob.pe/geoserver/c4i/wms?', {
@@ -81,4 +82,27 @@ const baseLayers = {
 
 L.control.layers(baseLayers, basemaps).addTo(mapL);
 
+$('#btnGoogleMaps').click(function () {
+    $("#mapid").show();
+    $('.leaflet-control-layers-selector')[0].click()
+});
 
+$('#btnGoogleEarth').click(function () {
+    $("#mapid").show();
+    $('.leaflet-control-layers-selector')[1].click()
+});
+
+$('#btnStreetView').click(function () {
+    $("#mapid").show();
+    $('.leaflet-control-layers-selector')[2].click()
+});
+
+$('#btnZoomIn').click(function () {
+    var zoomin = mapL.getZoom();
+    $('.leaflet-control-zoom-in')[0].click();
+});
+
+$('#btnZoomOut').click(function () {
+    var zoomin = mapL.getZoom();
+    $('.leaflet-control-zoom-out')[0].click();
+});

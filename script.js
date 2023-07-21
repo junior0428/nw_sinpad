@@ -10,7 +10,7 @@ var mapL = L.map('map', {
     }
 });
 
-var marker = L.marker([-11.732765062729807, -77.03735351562501]).addTo(mapL).bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+var marker = L.marker([-11.732765062729807, -77.03735351562501]).addTo(mapL).bindPopup("<b>Junior was here</b><br>Realizado por OGTIC-INDECI.").openPopup();
 
 var circle = L.circle([-11.732765062729807, -77.03735351562501], {
     color: 'red',
